@@ -1,0 +1,48 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main class="bg-light">
+  <h1 class="text-center py-4">Liste des Reservations</h1>
+  <div class="table-responsive mx-4">
+    <table class="table mb-0 table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Last name</th>
+          <th scope="col">First name</th>
+          <th scope="col">Date de reservation</th>
+          <th scope="col">Flight Airline</th>
+          <th scope="col">Flight Price</th>
+          <th scope="col">Activity Name</th>
+          <th scope="col">Activity Price</th>
+          <th scope="col">Hotel Name</th>
+          <th scope="col">Hotel Price per night</th>
+          <th scope="col">Total Price</th>
+          <th scope="col">Détails</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% reservations.forEach((reservation)=> { %>
+        <tr>
+          <th scope="row"><%= reservation.id %></th>
+          <td><%= reservation.lastname %></td>
+          <td><%= reservation.firstname %></td>
+          <td><%= reservation.date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
+          <td><%= reservation.flight_airline || "/" %></td>
+          <td><%= reservation.flight_price ? reservation.flight_price + "€" : "/" %></td>
+          <td><%= reservation.activity_name || "/" %></td>
+          <td><%= reservation.activity_price ? reservation.activity_price + "€" : "/" %></td>
+          <td><%= reservation.hotel_name || "/" %></td>
+          <td><%= reservation.hotel_price ? reservation.hotel_price + "€" : "/" %></td>
+          <td><%= reservation.total_price %>€</td>
+          <td><a class="btn btn-primary" href="#" role="button">Détails</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Supprimer</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main class="bg-light">
+  <h1 class="text-center py-4">Liste des Notes</h1>
+  <div class="table-responsive mx-4">
+    <table class="table mb-0 table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Rating</th>
+          <th scope="col">User's Last name</th>
+          <th scope="col">User's First name</th>
+          <th scope="col">Hotel name</th>
+          <th scope="col">Activity Name</th>
+          <th scope="col">Airline</th>
+          <th scope="col">Détails</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rates.forEach((rate)=> { %>
+        <tr>
+          <th scope="row"><%= rate.id %></th>
+          <td><%= rate.rating %>/5</td>
+          <td><%= rate.firstname %></td>
+          <td><%= rate.lastname %></td>
+          <td><%= rate.hotel_name || '/' %></td>
+          <td><%= rate.activity_name || '/' %></td>
+          <td><%= rate.airline || '/' %></td>
+          <td><a class="btn btn-primary" href="#" role="button">Détails</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Supprimer</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
+<%- include('../partials/footer') %>

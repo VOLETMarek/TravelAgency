@@ -1,6 +1,48 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<main>
-  <h1 class="home-title">Liste des Vols</h1>
+<main class="bg-light">
+  <h1 class="text-center py-4">Liste des Vols</h1>
+  <div class="table-responsive mx-4">
+    <table class="table mb-0 table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Flight Number</th>
+          <th scope="col">Airline</th>
+          <th scope="col">Departure Airport</th>
+          <th scope="col">Arrival Airport</th>
+          <th scope="col">Price</th>
+          <th scope="col">Remaining Seats</th>
+          <th scope="col">Image</th>
+          <th scope="col">Departure Date</th>
+          <th scope="col">Arrival Airport</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Détails</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flights.forEach((flight)=> { %>
+        <tr>
+          <th scope="row"><%= flight.id %></th>
+          <td><%= flight.flight_number %></td>
+          <td><%= flight.airline %></td>
+          <td><%= flight.departure_airport %></td>
+          <td><%= flight.arrival_airport %></td>
+          <td><%= flight.price %>€</td>
+          <td><%= flight.remaining_seats %></td>
+          <td><img src="<%= flight.image %>"></td>
+          <td><%= flight.departure_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
+          <td><%= flight.arrival_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
+          <td><%= flight.duration.slice(0, 5) %>h</td>
+          <td><a class="btn btn-primary" href="#" role="button">Détails</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Supprimer</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </main>
 <%- include('../partials/footer') %>

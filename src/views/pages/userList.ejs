@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main class="bg-light">
+  <h1 class="text-center py-4">Liste des Utilisateurs</h1>
+  <div class="table-responsive mx-4">
+    <table class="table mb-0 table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Last name</th>
+          <th scope="col">First name</th>
+          <th scope="col">User's username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Détails</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((user)=> { %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.lastname %></td>
+          <td><%= user.firstname %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td><a class="btn btn-primary" href="#" role="button">Détails</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Supprimer</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
+<%- include('../partials/footer') %>
