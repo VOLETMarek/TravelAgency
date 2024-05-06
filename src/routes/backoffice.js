@@ -38,6 +38,12 @@ router.get("/user-list", userController.fetchAllUsers);
 router.get("/user-create", userController.showCreateUser);
 // Soumettre le formulare de création d'un utilisateur
 router.post("/user-create", userController.createUser);
+// Afficher la page de détail d'un utilisateur
+router.get("/user-details/:userId", userController.fetchUserDetails);
+// Afficher la page de mise à jour d'un utilisateur
+router.get("/user-update/:userId", userController.showUpdateUser);
+// Afficher la page de mise à jour d'un utilisateur
+router.post("/user-update/:userId", userController.updateUser);
 
 
 module.exports = router;

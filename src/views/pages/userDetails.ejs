@@ -1,8 +1,7 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 <main class="bg-light text-center">
-  <h1 class="text-center py-4">User List</h1>
-  <a class="btn btn-primary mb-4" href="/backoffice/user-create" role="button">Create User</a>
+  <h1 class="text-center py-4">User Details</h1>
   <div class="table-responsive mx-4">
     <table class="table mb-0 table-bordered">
       <thead class="thead-light">
@@ -13,13 +12,9 @@
           <th scope="col">User's username</th>
           <th scope="col">Email</th>
           <th scope="col">Role</th>
-          <th scope="col">Détails</th>
-          <th scope="col">Modifier</th>
-          <th scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <% users.forEach((user)=> { %>
         <tr>
           <th scope="row"><%= user.id %></th>
           <td><%= user.lastname %></td>
@@ -27,11 +22,7 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td><%= user.role %></td>
-          <td><a class="btn btn-primary" href="/backoffice/user-details/<%= user.id %>" role="button">Details</a></td>
-          <td><a class="btn btn-primary" href="/backoffice/user-update/<%= user.id %>" role="button">Update</a></td>
-          <td><a class="btn btn-primary" href="/backoffice/user-delete/<%= user.id %>" role="button">Delete</a></td>
         </tr>
-        <% }) %>
       </tbody>
     </table>
   </div>

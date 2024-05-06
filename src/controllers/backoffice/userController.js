@@ -52,3 +52,58 @@ exports.createUser = async (req, res) => {
     }
   );
 };
+
+// Fonction pour afficher les détails d'un utilisateurs
+exports.fetchUserDetails = (req, res) => {
+  const userId = req.params.userId;
+  User.getUserById(userId, (err, user) => {
+    if (err) {
+      res
+        .status(500)
+        .send(
+          "Une erreur est survenue lors de la récupération des détails de l'utilisateur."
+        );
+      return;
+    }
+
+    res.render("userDetails", { user: user });
+  });
+};
+
+// Afficher un utilisateur pour sa modification
+exports.showUpdateUser = (req, res) => {
+  const userId = req.params.userId;
+
+  User.getUserById(userId, (err, user) => {
+    if (err) {
+      res
+        .status(500)
+        .send(
+          "Une erreur est survenue lors de la récupération des détails de l'utilisateur."
+        );
+      return;
+    }
+
+    res.render("userUpdate", {
+      user: user,
+      success: req.flash("success"),
+      error: req.flash("error"),
+    });
+  });
+};
+
+// Methode pour mettre a jour un utilisateur
+exports.updateUser = (req, res) => {
+  const userId = req.params.userId;
+  const { role, firstname, lastname, email, username } = req.body;
+
+  User.updateUserDetails(userId, lastname, firstname, username, email, role, (err, result) => {
+    if (err) {
+      req.flash("error", "Fail to update user");
+      res.redirect(req.originalUrl);
+      return;
+    }
+    req.flash("success", "Successful update");
+    res.redirect(req.originalUrl);
+  });
+};
