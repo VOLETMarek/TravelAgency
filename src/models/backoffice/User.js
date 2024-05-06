@@ -70,6 +70,17 @@ const User = {
       }
     );
   },
+
+  // Suppresion d'un utilisateur
+  deleteUserById: function (userId, callback) {
+    db.query("DELETE FROM users WHERE id = ?", [userId], (err, results) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, results);
+      }
+    });
+  },
 };
 
 module.exports = User;

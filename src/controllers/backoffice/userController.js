@@ -1,12 +1,14 @@
 const User = require("../../models/backoffice/User");
 const bcrypt = require("bcrypt");
 
-// AFficher la liste des utilisateurs
+// Afficher la liste des utilisateurs
 exports.fetchAllUsers = (req, res) => {
   User.getAll()
     .then((users) => {
       res.render("userList", {
         users: users,
+        success: req.flash("success"),
+        error: req.flash("error"),
       });
     })
     .catch((err) => {
@@ -106,4 +108,18 @@ exports.updateUser = (req, res) => {
     req.flash("success", "Successful update");
     res.redirect(req.originalUrl);
   });
+};
+
+// Methode pour supprimer un utilisateur
+exports.deleteUser = (req, res) => {
+  const userId = req.params.userId;
+
+  User.deleteUserById(userId, (err, result) => {
+    if (err) {
+      req.flash("error", "Fail to delete user");
+      res.redirect("/backoffice/user-list");
+      return;
+    }
+    req.flash("success", "Successful delete");
+    res.redirect("/backoffice/user-list");  });
 };

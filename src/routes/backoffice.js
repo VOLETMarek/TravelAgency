@@ -42,8 +42,10 @@ router.post("/user-create", userController.createUser);
 router.get("/user-details/:userId", userController.fetchUserDetails);
 // Afficher la page de mise à jour d'un utilisateur
 router.get("/user-update/:userId", userController.showUpdateUser);
-// Afficher la page de mise à jour d'un utilisateur
+// Soumettre la mise à jour d'un utilisateur
 router.post("/user-update/:userId", userController.updateUser);
+// Supprimer un utilisateur
+router.post("/user-delete/:userId", userController.deleteUser);
 
 
 module.exports = router;
