@@ -32,6 +32,12 @@ router.get("/review-list", reviewController.fetchAllReviews);
 router.get("/rate-list", rateController.fetchAllRates);
 
 // -----Users-----
+// Afficher la liste des utilisateurs
 router.get("/user-list", userController.fetchAllUsers);
+// Afficher la page de création d'un utilisateur
+router.get("/user-create", userController.showCreateUser);
+// Soumettre le formulare de création d'un utilisateur
+router.post("/user-create", userController.createUser);
+
 
 module.exports = router;

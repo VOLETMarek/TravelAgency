@@ -2,10 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path"); // Ajout de cette ligne pour importer le module path
-// Permet de stocker le role de l'uilisateur pour controler lacces aux pages du backoffice
-// const session = require("express-session");
-// Permet d'utiliser le module flash, pur beneficier des messages success et error pour le backoffice
-// const flash = require("express-flash");
+// Permet de stocker des données comme les messages d'erreurs des formulaire ou encore le role de l'utilisateur pour l backoffice
+const session = require("express-session");
+// Permet d'utiliser le module flash, pour beneficier des messages success et error pour le backoffice
+const flash = require("express-flash");
 
 const app = express();
 
@@ -19,8 +19,17 @@ const corsOptions = {
     origin: "http://localhost:3000",
   };
 
-// Utilisation de express-flash
-// app.use(flash());
+// Utiliser le middleware session avec la configuration spécifiée
+app.use(
+  session({
+    secret: '8r1y>&v|VsFr|z"}Z`p{m^^`Ry}cHI',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Utiliser express-flash
+app.use(flash());
 
 // Déclarer le dossier public comme un répertoire statique
 app.use(express.static("public"));

@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main class="bg-light">
+  <h1 class="text-center py-4">Create user</h1>
+  <form class="px-4" action="/backoffice/user-create" method="POST">
+    <div class="form-group mb-4">
+      <label for="lastname" class="mb-2">Last Name</label>
+      <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Last Name" name="lastname">
+    </div>
+    <div class="form-group mb-4">
+      <label for="firstname" class="mb-2">First Name</label>
+      <input type="text" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter First Name" name="firstname">
+    </div>
+    <div class="form-group mb-4">
+      <label for="username" class="mb-2">Username</label>
+      <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" name="username">
+    </div>
+    <div class="form-group mb-4">
+      <label for="email" class="mb-2">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" name="email">
+    </div>
+    <div class="form-group mb-4">
+      <label for="password" class="mb-2">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+    </div>
+    <div class="form-group mb-4">
+      <label for="role" class="mb-2">Select Role</label>
+      <select class="form-control" id="role" name="role">
+        <option>Guest</option>
+        <option>Manager</option>
+        <option>Admin</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mb-4">Submit</button>
+  </form>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
+</main>
+<%- include('../partials/footer') %>

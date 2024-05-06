@@ -1,7 +1,8 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<main class="bg-light">
-  <h1 class="text-center py-4">Liste des Activités</h1>
+<main class="bg-light text-center">
+  <h1 class="text-center py-4">Activity List</h1>
+  <a class="btn btn-primary mb-4" href="#" role="button">Create activity</a>
   <div class="table-responsive mx-4">
     <table class="table mb-0 table-bordered">
       <thead class="thead-light">
@@ -32,9 +33,9 @@
           <td><%= activity.start_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
           <td><%= activity.end_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
           <td><%= activity.duration %></td>
-          <td><a class="btn btn-primary" href="#" role="button">Détails</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Modifier</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Supprimer</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Details</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Update</a></td>
+          <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
         </tr>
         <% }) %>
       </tbody>
