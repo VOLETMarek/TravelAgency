@@ -47,13 +47,13 @@ const jsonBodyParser = bodyParser.json();
 const urlencodedBodyParser = bodyParser.urlencoded({ extended: true });
 
 // Utilisation du body parser JSON pour les routes front
-app.use("/front", jsonBodyParser);
+app.use("/frontoffice", jsonBodyParser);
 
 // Utilisation du body parser URL encodé pour les routes back
 app.use("/backoffice", urlencodedBodyParser);
 
 // Utilisation des routes du front office sur le chemin "/"
-app.use("/front", frontOfficeRoutes);
+app.use("/frontoffice", frontOfficeRoutes);
 
 // Utilisation des routes du back office sur le chemin "/backoffice"
 app.use("/backoffice", backOfficeRoutes);
