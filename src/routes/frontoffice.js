@@ -26,4 +26,7 @@ router.get("/hotel-details/:hotelId", hotelController.fetchHotelDetails);
 // Route pour l'inscription
 router.post("/signin", authController.signin);
 
+// Route pour l'authentification
+router.post("/login", authController.login);
+
 module.exports = router;

@@ -18,6 +18,22 @@ const User = {
       );
     });
   },
+
+  findByUsername: function (username) {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "SELECT id, lastname, firstname, username, email, password, role FROM users WHERE username = ?",
+        [username],
+        (err, results) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(results[0]);
+          }
+        }
+      );
+    });
+  },
 };
 
 module.exports = User;

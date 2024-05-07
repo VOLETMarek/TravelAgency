@@ -4,7 +4,7 @@ const User = require("../../models/frontoffice/User");
 
 const authController = {
   signin: async function (req, res) {
-    const {lastname, firstname, username, password, email } = req.body;
+    const { lastname, firstname, username, password, email } = req.body;
 
     try {
       // Vérification de la validité du mot de passe
@@ -46,6 +46,56 @@ const authController = {
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
+  },
+
+  // La méthode login gère la connexion utilisateur
+  login: function (req, res) {
+    const { username, password } = req.body;
+    let foundUser;
+
+    User.findByUsername(username)
+      .then((user) => {
+
+        // Si aucun utilisateur trouvé, on retourne au client une erreur
+        if (!user) {
+          return res
+            .status(401)
+            .json({ message: "Invalid username or password" });
+        }
+        // On stocke l'utilisateur trouvé dans foundUser pour qu'elle soit accessible aux autres bloc de then
+        foundUser = user;
+        return bcrypt.compare(password, user.password);
+      })
+
+      // Si le mot de passe ne match pas, on retourne au client une erreur
+      .then((match) => {
+        if (!match) {
+          return res
+            .status(401)
+            .json({ message: "Invalid username or password" });
+        }
+        // Si ca match, on signe le token JWT avec l'id de l'utilisateur retourné par la requete
+        const token = jwt.sign(
+          { userId: foundUser.id },
+          process.env.JWT_SECRET
+        );
+
+        res.status(200).json({
+          message: "Connexion réussie",
+          token: token,
+          username: foundUser.username,
+          lastname: foundUser.lastname,
+          firstname: foundUser.firstname,
+          email: foundUser.email,
+          role: foundUser.role,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          message:
+            "Une erreur s'est produite lors de la connexion de l'utilisateur",
+        });
+      });
   },
 };
 
