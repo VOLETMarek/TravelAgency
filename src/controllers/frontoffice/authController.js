@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/frontoffice/User");
+const authUtils = require("../../utils/auth");
 
 const authController = {
   signin: async function (req, res) {
@@ -55,7 +56,6 @@ const authController = {
 
     User.findByUsername(username)
       .then((user) => {
-
         // Si aucun utilisateur trouvé, on retourne au client une erreur
         if (!user) {
           return res
@@ -94,6 +94,25 @@ const authController = {
         res.status(500).json({
           message:
             "Une erreur s'est produite lors de la connexion de l'utilisateur",
+        });
+      });
+  },
+
+  update: function (req, res) {
+    const { lastname, firstname, username, email } = req.body;
+    // Extraire l'ID de l'utilisateur du token JWT
+    const userId = authUtils.getUserIdFromToken(req);
+    // Modification en BDD
+    User.updateUserDetails(userId, lastname, firstname, username, email)
+      .then((result) => {
+        res.status(200).json({
+          message: "Utilisateur modifié avec succès",
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          message:
+            "Une erreur s'est produite lors de la modification de l'utilisateur",
         });
       });
   },

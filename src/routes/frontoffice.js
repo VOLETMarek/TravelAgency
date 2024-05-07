@@ -29,4 +29,7 @@ router.post("/signin", authController.signin);
 // Route pour l'authentification
 router.post("/login", authController.login);
 
+// Route pour la modification des informations utilisateurs
+router.post("/update", authController.update);
+
 module.exports = router;

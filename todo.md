@@ -22,16 +22,17 @@
     -> Accueil de la reservation : 3 sous pages vols, activités et hotels
     -> Pour chaque page systeme de filtrage (disponibilités, nom du service, système de calendrier)
 - Systeme de panier 
+- Route pour inserer uen reservation ?
 ### Reviews
 - Insertion des commentaires sur la page d'une annonce 
 ### Notes
 - Insertion d'une note sur la page d'une annonce 
 
 ### User
-- Creation du compte
-- Affichage des informations utilisateur
-- Modification des information Utilisateur (mot de passe, email, pseudo etc)
-- Controller la reservation, l'insertionde commentaires et la notation (seul les utilisateurs conenctés peuvent le faire)
+- Creation du compte ✅
+- Connexion utilisateur ✅
+- Modification des information utilisateur (email, pseudo etc)
+- Modification de mot de passe user
 
 # To do v2
 

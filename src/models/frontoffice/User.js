@@ -34,6 +34,23 @@ const User = {
       );
     });
   },
+
+  // Mettre a jour l'utilisateur
+  updateUserDetails: function (userId, lastname, firstname, username, email) {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "UPDATE users SET username = ?, lastname = ?, firstname = ?, email = ? WHERE id = ?",
+        [username, lastname, firstname, email, userId],
+        (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+    });
+  },
 };
 
 module.exports = User;
