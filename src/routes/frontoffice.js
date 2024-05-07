@@ -4,7 +4,7 @@ const router = express.Router();
 const flightController = require("../controllers/frontoffice/flightController");
 const activityController = require("../controllers/frontoffice/activityController");
 const hotelController = require("../controllers/frontoffice/hotelController");
-
+const authController = require("../controllers/frontoffice/authController");
 
 // -----Flights-----
 router.get("/flight-list", flightController.fetchAllFlights);
@@ -21,5 +21,9 @@ router.get("/activity-details/:activityId", activityController.fetchActivityDeta
 router.get("/hotel-list", hotelController.fetchAllHotels);
 // Récupération d'un hotel en fonction de son id
 router.get("/hotel-details/:hotelId", hotelController.fetchHotelDetails);
+
+// -----Authentification-----
+// Route pour l'inscription
+router.post("/signin", authController.signin);
 
 module.exports = router;

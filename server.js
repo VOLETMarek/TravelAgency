@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+// On charge les variables d'environnement, on en aura besoin pour recuperer la clé secrete du token JWT dans le fichier .env
+require('dotenv').config();
 const bodyParser = require("body-parser");
 const path = require("path"); // Ajout de cette ligne pour importer le module path
 // Permet de stocker des données comme les messages d'erreurs des formulaire ou encore le role de l'utilisateur pour l backoffice

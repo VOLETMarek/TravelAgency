@@ -8,22 +8,20 @@
 
 ## To do frontoffice
 
-### Backoffice
-Route pour acceder au backoffice
 ### Flights
-- Afficher la liste des vols (affichage du nom de la compagnie, départ/arrival location et date, durée, prix, remaining seats)
-- Afficher 1 vol
+- Afficher la liste des vols (affichage du nom de la compagnie, départ/arrival location et date, durée, prix, remaining seats) ✅
+- Afficher 1 vol ✅
 ### Hotels
-- Afficher la liste des Hotels
-- Afficher 1 hotel
+- Afficher la liste des Hotels ✅
+- Afficher 1 hotel ✅
 ### Activities
-- Afficher la liste des Activités
-- Afficher 1 hotel
+- Afficher la liste des Activités ✅
+- Afficher 1 hotel ✅
 ### Reservation
-- Systeme de recherche (attention on ne peut pas dans la configuration actuelle faire une reservation de 2 vols en meme temps ou 2hotels etc, la plus grosse reseervation qu'on puisse faire c'est 1 de chaque. Si l'utilisateur veut reserver plusieurs fois un vol ou autre, il fadura effectuer une autre reservation)
+- Systeme de recherche (attention on ne peut pas dans la configuration actuelle faire une reservation de 2 vols en meme temps ou 2 hotels etc, la plus grosse reseervation qu'on puisse faire c'est 1 de chaque. Si l'utilisateur veut reserver plusieurs fois un vol ou autre, il fadura effectuer une autre reservation)
     -> Accueil de la reservation : 3 sous pages vols, activités et hotels
     -> Pour chaque page systeme de filtrage (disponibilités, nom du service, système de calendrier)
-- Systeme de panier et a voir 
+- Systeme de panier 
 ### Reviews
 - Insertion des commentaires sur la page d'une annonce 
 ### Notes
