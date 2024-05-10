@@ -4,7 +4,6 @@ const User = {
   signin: function (userData) {
     return new Promise((resolve, reject) => {
       const { lastname, firstname, username, password, email } = userData;
-
       db.query(
         "INSERT INTO users (lastname, firstname, username, password, email, role) VALUES (?, ?, ?, ?, ?, 'user')",
         [lastname, firstname, username, password, email],

@@ -25,17 +25,18 @@
 - Route pour inserer uen reservation ?
 ### Reviews
 - Insertion des commentaires sur la page d'une annonce 
+- Route pour donner la liste de commentaire par service ou annonces au client (a fetch une fois le commentaire inséré)
 ### Notes
 - Insertion d'une note sur la page d'une annonce 
 
 ### User
 - Creation du compte ✅
 - Connexion utilisateur ✅
-- Modification des information utilisateur (email, pseudo etc)
-- Modification de mot de passe user
+- Modification des information utilisateur (email, pseudo etc) ✅
 
 # To do v2
 
+- Modification de mot de passe utilisateur
 - Gestion du paiement
 - Gestion des promotions et des offres spéciales (affichage des services en promos)
 - Système de recommandations basé sur les préférences et l'historique des

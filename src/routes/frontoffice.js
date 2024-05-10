@@ -5,6 +5,8 @@ const flightController = require("../controllers/frontoffice/flightController");
 const activityController = require("../controllers/frontoffice/activityController");
 const hotelController = require("../controllers/frontoffice/hotelController");
 const authController = require("../controllers/frontoffice/authController");
+const reservationController = require("../controllers/frontoffice/reservationController");
+
 
 // -----Flights-----
 router.get("/flight-list", flightController.fetchAllFlights);
@@ -31,5 +33,11 @@ router.post("/login", authController.login);
 
 // Route pour la modification des informations utilisateurs
 router.post("/update", authController.update);
+
+// Route pour lister les reservations
+router.get("/reservation-list", reservationController.fetchAllReservations);
+
+// Route pour l'insertion d'une reservation
+router.post("/reservation", reservationController.create);
 
 module.exports = router;
