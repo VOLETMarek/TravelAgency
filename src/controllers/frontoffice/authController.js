@@ -116,6 +116,34 @@ const authController = {
         });
       });
   },
+
+  // La méthode login gère la connexion utilisateur
+  fetchUserData: function (req, res) {
+    const { username } = req.body;
+
+    User.findByUsername(username)
+      .then((user) => {
+        // Si aucun utilisateur trouvé, on retourne au client une erreur
+        if (!user) {
+          return res
+            .status(401)
+            .json({ message: "Invalid username" });
+        }
+        res.status(200).json({
+          username: user.username,
+          lastname: user.lastname,
+          firstname: user.firstname,
+          email: user.email,
+        });
+      })
+
+      .catch((error) => {
+        res.status(500).json({
+          message:
+            "Une erreur s'est produite lors de la recuperation des données utilisateur",
+        });
+      });
+  },
 };
 
 module.exports = authController;

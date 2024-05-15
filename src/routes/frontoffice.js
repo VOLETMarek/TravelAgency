@@ -34,6 +34,9 @@ router.post("/login", authController.login);
 // Route pour la modification des informations utilisateurs
 router.post("/update", authController.update);
 
+// Route pour la modification des informations utilisateurs
+router.get("/user", authController.fetchUserData);
+
 // Route pour lister les reservations
 router.get("/reservation-list", reservationController.fetchAllReservations);
 
