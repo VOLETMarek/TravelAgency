@@ -8,7 +8,7 @@ const Review = {
           reviews.id,
           reviews.content,
           reviews.published_date,
-          users.username,
+          users.username
         FROM 
           reviews
         JOIN 
