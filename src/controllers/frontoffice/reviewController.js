@@ -61,10 +61,10 @@ exports.fetchActivityReviews = async (req, res) => {
 };
 
 exports.createFlightReview = (req, res) => {
-  const { flightId, content } = req.body;
+  const { flight_id, content } = req.body;
   const userId = authUtils.getUserIdFromToken(req);
 
-  Review.insertFlightReview(userId, flightId, content)
+  Review.insertFlightReview(userId, flight_id, content)
     .then((result) => {
       res.status(201).json({ message: "Commentaire ajouté avec succès." });
     })

@@ -16,7 +16,7 @@ router.get("/flight-details/:flightId", flightController.fetchFlightDetails);
 // Récupération des commentaires d'un vol
 router.get("/flight-reviews/:flightId", reviewController.fetchFlightReviews);
 // Route pour insertion d'un commentaire
-router.post("/flight-reviews", reviewController.createFlightReview);
+router.post("/flight-review", reviewController.createFlightReview);
 
 // -----Activities-----
 router.get("/activity-list", activityController.fetchAllActivities);
@@ -25,7 +25,7 @@ router.get("/activity-details/:activityId", activityController.fetchActivityDeta
 // Récupération des commentaires d'une activité
 router.get("/activity-reviews/:activityId", reviewController.fetchActivityReviews);
 // Route pour insertion d'un commentaire
-router.post("/Activity-reviews", reviewController.createActivityReview);
+router.post("/activity-review", reviewController.createActivityReview);
 
 // -----Hotels-----
 router.get("/hotel-list", hotelController.fetchAllHotels);
@@ -34,7 +34,7 @@ router.get("/hotel-details/:hotelId", hotelController.fetchHotelDetails);
 // Récupération des commentaires d'un vol
 router.get("/hotel-reviews/:hotelId", reviewController.fetchHotelReviews);
 // Route pour insertion d'un commentaire
-router.post("/Hotel-reviews", reviewController.createHotelReview);
+router.post("/hotel-review", reviewController.createHotelReview);
 
 // -----Authentification-----
 // Route pour l'inscription

@@ -16,7 +16,8 @@ const Review = {
         ON 
           reviews.user_id = users.id
         WHERE 
-          reviews.flight_id = ?;
+          reviews.flight_id = ?
+        ORDER BY reviews.published_date DESC;
       `;
       db.query(query, [flightId], (error, results) => {
         if (error) {
@@ -42,7 +43,8 @@ const Review = {
         ON 
           reviews.user_id = users.id
         WHERE 
-          reviews.activity_id = ?;
+          reviews.activity_id = ?
+        ORDER BY reviews.published_date DESC;
       `;
       db.query(query, [activityId], (error, results) => {
         if (error) {
@@ -68,7 +70,8 @@ const Review = {
         ON 
           reviews.user_id = users.id
         WHERE 
-          reviews.hotel_id = ?;
+          reviews.hotel_id = ?
+        ORDER BY reviews.published_date DESC;
       `;
       db.query(query, [hotelId], (error, results) => {
         if (error) {
