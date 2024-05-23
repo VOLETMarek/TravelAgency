@@ -3,31 +3,7 @@ const db = require("../../../db");
 const Reservation = {
   getAll: function () {
     return new Promise((resolve, reject) => {
-      const query = `
-        SELECT 
-          reservations.id, 
-          reservations.date,
-          reservations.total_price, 
-          users.firstname, 
-          users.lastname, 
-          flights.airline AS flight_airline, 
-          flights.price AS flight_price, 
-          activities.name AS activity_name, 
-          activities.price AS activity_price, 
-          hotels.name AS hotel_name, 
-          hotels.price_per_night AS hotel_price 
-        FROM 
-          reservations 
-        LEFT JOIN 
-          users ON reservations.user_id = users.id 
-        LEFT JOIN 
-          flights ON reservations.flight_id = flights.id 
-        LEFT JOIN 
-          activities ON reservations.activity_id = activities.id 
-        LEFT JOIN 
-          hotels ON reservations.hotel_id = hotels.id;
-      `;
-
+      const query = "SELECT * FROM reservations";
       db.query(query, (err, results) => {
         if (err) {
           reject(err);
@@ -37,6 +13,19 @@ const Reservation = {
       });
     });
   },
+
+  deleteByUserId: function (userId) {
+    return new Promise((resolve, reject) => {
+      const query = "DELETE FROM reservations WHERE user_id = ?";
+      db.query(query, [userId], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 };
 
 module.exports = Reservation;

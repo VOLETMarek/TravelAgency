@@ -3,7 +3,7 @@ const Reservation = require("../../models/backoffice/Reservation");
 exports.fetchAllReservations = (req, res) => {
   Reservation.getAll()
     .then((reservations) => {
-      res.render("reservationList", {
+      res.render("Reservation/reservationList", {
         reservations: reservations,
       });
     })

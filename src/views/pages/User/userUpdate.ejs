@@ -1,7 +1,19 @@
-<%- include('../partials/head') %>
-<%- include('../partials/header') %>
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
 <main class="bg-light">
   <h1 class="text-center py-4">Update user</h1>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
   <form class="px-4" action="/backoffice/user-update/<%= user.id %>" method="POST">
     <div class="form-group mb-4">
       <label for="lastname" class="mb-2">Last Name</label>
@@ -29,17 +41,5 @@
     </div>
     <button type="submit" class="btn btn-primary mb-4">Submit</button>
   </form>
-  <div>
-    <% if (success && success.length > 0) { %>
-    <div class="alert alert-success" role="alert">
-      <%= success %>
-    </div>
-    <% } %>
-    <% if (error && error.length > 0) { %>
-    <div class="alert alert-danger" role="alert">
-      <%= error %>
-    </div>
-    <% } %>
-  </div>
 </main>
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>

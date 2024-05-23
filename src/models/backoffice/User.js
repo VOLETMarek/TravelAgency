@@ -42,22 +42,34 @@ const User = {
 
   // Récupération des informations d'un utilisateur
   getUserById: function (userId, callback) {
-    db.query("SELECT id, lastname, firstname, username, email, role FROM users WHERE id = ?", [userId], (err, result) => {
-      if (err) {
-        callback(err, null);
-        return;
+    db.query(
+      "SELECT id, lastname, firstname, username, email, role FROM users WHERE id = ?",
+      [userId],
+      (err, result) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        if (result.length) {
+          callback(null, result[0]);
+        } else {
+          // Aucun utilisateur trouvé avec cet ID
+          callback({ message: "Aucun utilisateur trouvé avec cet ID." }, null);
+        }
       }
-      if (result.length) {
-        callback(null, result[0]);
-      } else {
-        // Aucun utilisateur trouvé avec cet ID
-        callback({ message: "Aucun utilisateur trouvé avec cet ID." }, null);
-      }
-    });
+    );
   },
 
   // Mettre a jour l'utilisateur
-  updateUserDetails: function (userId, lastname, firstname, username, email, role, callback) {
+  updateUserDetails: function (
+    userId,
+    lastname,
+    firstname,
+    username,
+    email,
+    role,
+    callback
+  ) {
     db.query(
       "UPDATE users SET lastname = ?, firstname = ?, username = ?, email = ?, role = ? WHERE id = ?",
       [lastname, firstname, username, email, role, userId],
@@ -71,14 +83,16 @@ const User = {
     );
   },
 
-  // Suppresion d'un utilisateur
-  deleteUserById: function (userId, callback) {
-    db.query("DELETE FROM users WHERE id = ?", [userId], (err, results) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, results);
-      }
+  // Suppression d'un utilisateur
+  deleteByUserId: function (userId) {
+    return new Promise((resolve, reject) => {
+      db.query("DELETE FROM users WHERE id = ?", [userId], (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
     });
   },
 };

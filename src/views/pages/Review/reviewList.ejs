@@ -1,5 +1,5 @@
-<%- include('../partials/head') %>
-<%- include('../partials/header') %>
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
 <main class="bg-light text-center">
   <h1 class="text-center py-4">Review List</h1>
   <a class="btn btn-primary mb-4" href="#" role="button">Create Review</a>
@@ -33,13 +33,17 @@
           <td><%= review.hotel_name || '/' %></td>
           <td><%= review.airline || '/' %></td>
           <td><%= review.activity_name || '/' %></td>
-          <td><a class="btn btn-primary" href="#" role="button">Details</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Update</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+          <td><a class="btn btn-primary" href="/backoffice/review-details/<%= review.id %>" role="button">Details</a></td>
+          <td><a class="btn btn-primary" href="/backoffice/review-update/<%= review.id %>" role="button">Update</a></td>
+          <td>
+            <form action="/backoffice/review-delete/<%= review.id %>" method="POST">
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+          </td>
         </tr>
         <% }) %>
       </tbody>
     </table>
   </div>
 </main>
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>

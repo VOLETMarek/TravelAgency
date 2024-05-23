@@ -1,0 +1,66 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+
+<main class="bg-light">
+  <h1 class="text-center py-4">Flight Details</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Flight Number</th>
+              <td><%= flight.flight_number %></td>
+            </tr>
+            <tr>
+              <th scope="row">Airline</th>
+              <td><%= flight.airline %></td>
+            </tr>
+            <tr>
+              <th scope="row">Departure Airport</th>
+              <td><%= flight.departure_airport %></td>
+            </tr>
+            <tr>
+              <th scope="row">Arrival Airport</th>
+              <td><%= flight.arrival_airport %></td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td><%= flight.price %></td>
+            </tr>
+            <tr>
+              <th scope="row">Remaining Seats</th>
+              <td><%= flight.remaining_seats %></td>
+            </tr>
+            <tr>
+              <th scope="row">Image</th>
+              <td><img src="<%= flight.image %>" alt="Flight Image" class="img-fluid"></td>
+            </tr>
+            <tr>
+              <th scope="row">Departure Date</th>
+              <td><%= flight.departure_date %></td>
+            </tr>
+            <tr>
+              <th scope="row">Arrival Date</th>
+              <td><%= flight.arrival_date %></td>
+            </tr>
+            <tr>
+              <th scope="row">Duration</th>
+              <td><%= flight.duration %></td>
+            </tr>
+            <tr>
+              <th scope="row">Logo</th>
+              <td><img src="<%= flight.logo %>" alt="Airline Logo" class="img-fluid"></td>
+            </tr>
+            <tr>
+              <th scope="row">Rate</th>
+              <td><%= flight.rate %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,62 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+
+<main class="bg-light">
+  <h1 class="text-center py-4">Create Hotel</h1>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
+  <form class="px-4" action="/backoffice/hotel-create" method="POST">
+    <div class="form-group mb-4">
+      <label for="name" class="mb-2">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="location" class="mb-2">Location</label>
+      <input type="text" class="form-control" id="location" placeholder="Enter Location" name="location" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="available_rooms" class="mb-2">Available Rooms</label>
+      <input type="number" class="form-control" id="available_rooms" placeholder="Enter Available Rooms" name="available_rooms" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="price_per_night" class="mb-2">Price per Night</label>
+      <input type="number" class="form-control" id="price_per_night" placeholder="Enter Price per Night" name="price_per_night" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="image" class="mb-2">Image</label>
+      <input type="text" class="form-control" id="image" placeholder="Enter Image URL" name="image" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="start_date" class="mb-2">Start Date</label>
+      <input type="date" class="form-control" id="start_date" name="start_date" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="end_date" class="mb-2">End Date</label>
+      <input type="date" class="form-control" id="end_date" name="end_date" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="duration" class="mb-2">Duration</label>
+      <input type="time" class="form-control" id="duration" name="duration" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="description" class="mb-2">Description</label>
+      <textarea class="form-control" id="description" placeholder="Enter Description" name="description" rows="3" required></textarea>
+    </div>
+    <div class="form-group mb-4">
+      <label for="rate" class="mb-2">Rate</label>
+      <input type="number" class="form-control" id="rate" placeholder="Enter Rate" name="rate" min="1" max="5" required>
+    </div>
+    <button type="submit" class="btn btn-primary mb-4">Submit</button>
+  </form>
+</main>
+<%- include('../../partials/footer') %>

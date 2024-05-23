@@ -3,7 +3,7 @@ const Rate = require("../../models/backoffice/Rate");
 exports.fetchAllRates = (req, res) => {
   Rate.getAll()
     .then((rates) => {
-      res.render("rateList", {
+      res.render("Rate/rateList", {
         rates: rates,
       });
     })

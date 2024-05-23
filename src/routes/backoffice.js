@@ -15,12 +15,30 @@ router.get("/", homeController.renderHomePage);
 
 // -----Flights-----
 router.get("/flight-list", flightController.fetchAllFlights);
+router.get("/flight-create", flightController.showFlightCreate);
+router.post("/flight-create", flightController.createFlight);
+router.get("/flight-details/:flightId", flightController.showFlightDetails);
+router.get("/flight-update/:flightId", flightController.showUpdateFlight);
+router.post("/flight-update/:flightId", flightController.updateFlight);
+router.post("/flight-delete/:flightId", flightController.deleteFlight);
 
 // -----Hotels-----
 router.get("/hotel-list", hotelController.fetchAllHotels);
+router.get("/hotel-create", hotelController.showHotelCreate);
+router.post("/hotel-create", hotelController.createHotel);
+router.get("/hotel-details/:hotelId", hotelController.showHotelDetails);
+router.get("/hotel-update/:hotelId", hotelController.showUpdateHotel);
+router.post("/hotel-update/:hotelId", hotelController.updateHotel);
+router.post("/hotel-delete/:hotelId", hotelController.deleteHotel);
 
 // -----Activities-----
 router.get("/activity-list", activityController.fetchAllActivities);
+router.get("/activity-create", activityController.showActivityCreate);
+// router.post("/activity-create", activityController.createActivity);
+// router.get("/activity-details/:activityId", activityController.showActivityDetails);
+// router.get("/activity-update/:activityId", activityController.showUpdateActivity);
+// router.post("/activity-update/:activityId", activityController.updateActivity);
+// router.post("/activity-delete/:activityId", activityController.deleteActivity);
 
 // -----Reservations-----
 router.get("/reservation-list", reservationController.fetchAllReservations);

@@ -1,11 +1,13 @@
 const User = require("../../models/backoffice/User");
+const Reservation = require("../../models/backoffice/Reservation");
+const Review = require("../../models/backoffice/Review");
 const bcrypt = require("bcrypt");
 
 // Afficher la liste des utilisateurs
 exports.fetchAllUsers = (req, res) => {
   User.getAll()
     .then((users) => {
-      res.render("userList", {
+      res.render("User/userList", {
         users: users,
         success: req.flash("success"),
         error: req.flash("error"),
@@ -21,7 +23,7 @@ exports.fetchAllUsers = (req, res) => {
 
 // Afficher le formulaire de création d'un utilisateur
 exports.showCreateUser = (req, res) => {
-  res.render("userCreate", {
+  res.render("User/userCreate", {
     success: req.flash("success"),
     error: req.flash("error"),
   });
@@ -68,7 +70,7 @@ exports.fetchUserDetails = (req, res) => {
       return;
     }
 
-    res.render("userDetails", { user: user });
+    res.render("User/userDetails", { user: user });
   });
 };
 
@@ -86,7 +88,7 @@ exports.showUpdateUser = (req, res) => {
       return;
     }
 
-    res.render("userUpdate", {
+    res.render("User/userUpdate", {
       user: user,
       success: req.flash("success"),
       error: req.flash("error"),
@@ -114,12 +116,19 @@ exports.updateUser = (req, res) => {
 exports.deleteUser = (req, res) => {
   const userId = req.params.userId;
 
-  User.deleteUserById(userId, (err, result) => {
-    if (err) {
-      req.flash("error", "Fail to delete user");
+  Promise.all([
+    Reservation.deleteByUserId(userId),
+    Review.deleteByUserId(userId),
+    User.deleteByUserId(userId)
+  ])
+    .then(() => {
+      req.flash("success", "Successful delete");
       res.redirect("/backoffice/user-list");
-      return;
-    }
-    req.flash("success", "Successful delete");
-    res.redirect("/backoffice/user-list");  });
+    })
+    .catch((err) => {
+      console.error(err);
+      req.flash("error", "Failed to delete user's reservations/reviews");
+      res.redirect("/backoffice/user-list");
+    });
 };
+

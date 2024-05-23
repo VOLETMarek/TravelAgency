@@ -1,0 +1,25 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center mb-4"><%= hotel.name %></h1>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="<%= hotel.image %>" class="img-fluid rounded mb-4" alt="<%= hotel.name %>">
+      </div>
+      <div class="col-md-6">
+        <p><strong>Location:</strong> <%= hotel.location %></p>
+        <p><strong>Available Rooms:</strong> <%= hotel.available_rooms %></p>
+        <p><strong>Price per Night:</strong> <%= hotel.price_per_night %>€</p>
+        <p><strong>Start Date:</strong> <%= hotel.start_date %></p>
+        <p><strong>End Date:</strong> <%= hotel.end_date %></p>
+        <p><strong>Duration:</strong> <%= hotel.duration %></p>
+        <p><strong>Description:</strong> <%= hotel.description %></p>
+        <p><strong>Rate:</strong> <%= hotel.rate %>/5</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,71 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+
+<main class="bg-light">
+  <h1 class="text-center py-4">Create Flight</h1>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
+  <form class="px-4" action="/backoffice/flight-create" method="POST">
+    <div class="form-group mb-4">
+      <label for="flight_number" class="mb-2">Flight Number</label>
+      <input type="text" class="form-control" id="flight_number" placeholder="Enter Flight Number" name="flight_number" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="airline" class="mb-2">Airline</label>
+      <input type="text" class="form-control" id="airline" placeholder="Enter Airline" name="airline" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="departure_airport" class="mb-2">Departure Airport</label>
+      <input type="text" class="form-control" id="departure_airport" placeholder="Enter Departure Airport" name="departure_airport" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="arrival_airport" class="mb-2">Arrival Airport</label>
+      <input type="text" class="form-control" id="arrival_airport" placeholder="Enter Arrival Airport" name="arrival_airport" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="price" class="mb-2">Price</label>
+      <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="remaining_seats" class="mb-2">Remaining Seats</label>
+      <input type="number" class="form-control" id="remaining_seats" placeholder="Enter Remaining Seats" name="remaining_seats" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="image" class="mb-2">Image URL</label>
+      <input type="url" class="form-control" id="image" placeholder="Enter Image URL" name="image" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="departure_date" class="mb-2">Departure Date</label>
+      <input type="datetime-local" class="form-control" id="departure_date" name="departure_date" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="arrival_date" class="mb-2">Arrival Date</label>
+      <input type="datetime-local" class="form-control" id="arrival_date" name="arrival_date" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="duration" class="mb-2">Duration</label>
+      <input type="time" class="form-control" id="duration" name="duration" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="logo" class="mb-2">Logo URL</label>
+      <input type="url" class="form-control" id="logo" placeholder="Enter Logo URL" name="logo" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="rate" class="mb-2">Rate</label>
+      <input type="number" class="form-control" id="rate" placeholder="Enter Rate (1-5)" name="rate" min="1" max="5" step="0.1" required>
+    </div>
+    <button type="submit" class="btn btn-primary mb-4">Submit</button>
+  </form>
+</main>
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,71 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+
+<main class="bg-light">
+  <h1 class="text-center py-4">Update Flight</h1>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
+  <form class="px-4" action="/backoffice/flight-update/<%= flight.id %>" method="POST">
+    <div class="form-group mb-4">
+      <label for="flight_number" class="mb-2">Flight Number</label>
+      <input type="text" class="form-control" id="flight_number" name="flight_number" value="<%= flight.flight_number %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="airline" class="mb-2">Airline</label>
+      <input type="text" class="form-control" id="airline" name="airline" value="<%= flight.airline %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="departure_airport" class="mb-2">Departure Airport</label>
+      <input type="text" class="form-control" id="departure_airport" name="departure_airport" value="<%= flight.departure_airport %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="arrival_airport" class="mb-2">Arrival Airport</label>
+      <input type="text" class="form-control" id="arrival_airport" name="arrival_airport" value="<%= flight.arrival_airport %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="price" class="mb-2">Price</label>
+      <input type="number" class="form-control" id="price" name="price" value="<%= flight.price %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="remaining_seats" class="mb-2">Remaining Seats</label>
+      <input type="number" class="form-control" id="remaining_seats" name="remaining_seats" value="<%= flight.remaining_seats %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="image" class="mb-2">Image URL</label>
+      <input type="text" class="form-control" id="image" name="image" value="<%= flight.image %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="departure_date" class="mb-2">Departure Date</label>
+      <input type="datetime-local" class="form-control" id="departure_date" name="departure_date" value="<%= flight.departure_date.toISOString().slice(0, 16) %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="arrival_date" class="mb-2">Arrival Date</label>
+      <input type="datetime-local" class="form-control" id="arrival_date" name="arrival_date" value="<%= flight.arrival_date.toISOString().slice(0, 16) %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="duration" class="mb-2">Duration</label>
+      <input type="text" class="form-control" id="duration" name="duration" value="<%= flight.duration %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="logo" class="mb-2">Logo URL</label>
+      <input type="text" class="form-control" id="logo" name="logo" value="<%= flight.logo %>" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="rate" class="mb-2">Rate</label>
+      <input type="number" class="form-control" id="rate" name="rate" value="<%= flight.rate %>" min="1" max="5" required>
+    </div>
+    <button type="submit" class="btn btn-primary mb-4">Update</button>
+  </form>
+</main>
+
+<%- include('../../partials/footer') %>

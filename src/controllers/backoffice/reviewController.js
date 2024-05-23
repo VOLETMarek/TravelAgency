@@ -3,7 +3,7 @@ const Review = require("../../models/backoffice/Review");
 exports.fetchAllReviews = (req, res) => {
   Review.getAll()
     .then((reviews) => {
-      res.render("reviewList", {
+      res.render("Review/reviewList", {
         reviews: reviews,
       });
     })

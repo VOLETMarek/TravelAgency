@@ -1,9 +1,21 @@
-<%- include('../partials/head') %>
-<%- include('../partials/header') %>
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
 <main class="bg-light text-center">
   <h1 class="text-center py-4">Flight List</h1>
-  <a class="btn btn-primary mb-4" href="#" role="button">Create Flight</a>
-  <div class="table-responsive mx-4">
+  <a class="btn btn-primary mb-4" href="/backoffice/flight-create" role="button">Create Flight</a>
+  <div>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  </div>
+  <div class="table-responsive mx-4 mb-4">
     <table class="table mb-0 table-bordered">
       <thead class="thead-light">
         <tr>
@@ -37,13 +49,17 @@
           <td><%= flight.departure_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
           <td><%= flight.arrival_date.toLocaleString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %>h</td>
           <td><%= flight.duration.slice(0, 5) %>h</td>
-          <td><a class="btn btn-primary" href="#" role="button">Details</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Update</a></td>
-          <td><a class="btn btn-primary" href="#" role="button">Delete</a></td>
+          <td><a class="btn btn-primary" href="/backoffice/flight-details/<%= flight.id %>" role="button">Details</a></td>
+          <td><a class="btn btn-primary" href="/backoffice/flight-update/<%= flight.id %>" role="button">Update</a></td>
+          <td>
+            <form action="/backoffice/flight-delete/<%= flight.id %>" method="POST">
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+          </td>
         </tr>
         <% }) %>
       </tbody>
     </table>
   </div>
 </main>
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>

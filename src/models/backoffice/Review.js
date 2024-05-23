@@ -21,6 +21,19 @@ const Review = {
       });
     });
   },
+
+  deleteByUserId: function (userId) {
+    return new Promise((resolve, reject) => {
+      const query = "DELETE FROM reviews WHERE user_id = ?";
+      db.query(query, [userId], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 };
 
 module.exports = Review;

@@ -1,3 +1,3 @@
 exports.renderHomePage = (req, res) => {
-    res.render("home");
-  };
+  res.render("home");
+};
