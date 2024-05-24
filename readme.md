@@ -1,4 +1,4 @@
-# TravelAgency
+# ✈️ TravelAgency - Express.js ✈️
 
 TravelAgency is a web application built with Express.js that allows users to search and book flights, hotels, and activities online.
 
@@ -8,8 +8,7 @@ TravelAgency is a web application built with Express.js that allows users to sea
 - **Search:** Users can search for flights, hotels, and activities based on various criteria.
 - **Search Results:** Display search results with filtering and sorting options.
 - **Online Booking System:** Implement an online reservation system with availability calendars.
-- **Transaction Management:** Handle transactions and payment processing securely.
-- **Rating and Reviews:** Allow users to rate and leave reviews for hotels, flights, and activities.
+- **Reviews:** Allow users to leave reviews for hotels, flights, and activities.
 
 ## Installation
 
@@ -33,13 +32,41 @@ cd TravelAgency
 npm install
 ```
 
-4. Start the server:
+4. Import data base on phpmyadmin and create db.js file. It looks like this : 
+```bash
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+    host: 'localhost', 
+    user: 'your-data-base-username', 
+    password: 'your-password!', 
+    database: 'your-data-base-name' 
+});
+
+connection.connect((err) => {
+    if (err) {
+        console.error('Erreur de connexion à la base de données : ' + err.stack);
+        return;
+    }
+    console.log('Connexion à la base de données établie avec succès !');
+});
+
+module.exports = connection;
+```
+
+5. Generate and insert your JWT secret key in .env file : 
+
+```bash
+JWT_SECRET=your-secret-key
+```
+
+6. Start the server:
 
 ```bash
 npm start
 ```
 
-5. Access the application in your browser by visiting http://localhost:3000.
+7. Access the application in your browser by visiting http://localhost:5000.
 
 ## Usage
 
@@ -47,8 +74,8 @@ npm start
 2. Search for flights, hotels, or activities using the search functionality.
 3. Filter and sort search results based on your preferences.
 4. Book your desired flights, hotels, or activities online.
-5. Manage your bookings and view your transaction history.
-6. Rate and leave reviews for hotels, flights, and activities.
+5. Manage your bookings
+6. Leave reviews for hotels, flights, and activities.
 
 ## Technologies Used
 
