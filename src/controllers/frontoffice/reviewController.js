@@ -77,10 +77,10 @@ exports.createFlightReview = (req, res) => {
 };
 
 exports.createActivityReview = (req, res) => {
-  const { activityId, content } = req.body;
+  const { activity_id, content } = req.body;
   const userId = authUtils.getUserIdFromToken(req);
 
-  Review.insertActivityReview(userId, activityId, content)
+  Review.insertActivityReview(userId, activity_id, content)
     .then((result) => {
       res.status(201).json({ message: "Commentaire ajouté avec succès." });
     })
@@ -93,10 +93,10 @@ exports.createActivityReview = (req, res) => {
 };
 
 exports.createHotelReview = (req, res) => {
-  const { hotelId, content } = req.body;
+  const { hotel_id, content } = req.body;
   const userId = authUtils.getUserIdFromToken(req);
 
-  Review.insertHotelReview(userId, hotelId, content)
+  Review.insertHotelReview(userId, hotel_id, content)
     .then((result) => {
       res.status(201).json({ message: "Commentaire ajouté avec succès." });
     })

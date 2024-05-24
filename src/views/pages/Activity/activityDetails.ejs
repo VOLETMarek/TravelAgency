@@ -1,0 +1,26 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center py-4"><%= activity.name %></h1>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="<%= activity.image %>" class="img-fluid" alt="<%= activity.name %>">
+      </div>
+      <div class="col-md-6">
+        <h3>Location: <%= activity.location %></h3>
+        <p><strong>Description:</strong> <%= activity.description %></p>
+        <p><strong>Price:</strong> <%= activity.price %>€</p>
+        <p><strong>Start Date:</strong> <%= activity.start_date %></p>
+        <p><strong>End Date:</strong> <%= activity.end_date %></p>
+        <p><strong>Duration:</strong> <%= activity.duration %></p>
+        <p><strong>Rate:</strong> <%= activity.rate %> / 5</p>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <form action="/backoffice/activity/delete/<%= activity.id %>" method="POST" class="d-inline">
+      </form>
+    </div>
+  </div>
+</main>
+<%- include('../../partials/footer') %>

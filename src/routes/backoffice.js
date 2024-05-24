@@ -7,7 +7,6 @@ const hotelController = require("../controllers/backoffice/hotelController");
 const activityController = require("../controllers/backoffice/activityController");
 const reservationController = require("../controllers/backoffice/reservationController");
 const reviewController = require("../controllers/backoffice/reviewController");
-const rateController = require("../controllers/backoffice/rateController");
 const userController = require("../controllers/backoffice/userController");
 
 // Routes pour acceder à la page d'accueil
@@ -34,20 +33,29 @@ router.post("/hotel-delete/:hotelId", hotelController.deleteHotel);
 // -----Activities-----
 router.get("/activity-list", activityController.fetchAllActivities);
 router.get("/activity-create", activityController.showActivityCreate);
-// router.post("/activity-create", activityController.createActivity);
-// router.get("/activity-details/:activityId", activityController.showActivityDetails);
-// router.get("/activity-update/:activityId", activityController.showUpdateActivity);
-// router.post("/activity-update/:activityId", activityController.updateActivity);
-// router.post("/activity-delete/:activityId", activityController.deleteActivity);
+router.post("/activity-create", activityController.createActivity);
+router.get("/activity-details/:activityId", activityController.showActivityDetails);
+router.get("/activity-update/:activityId", activityController.showUpdateActivity);
+router.post("/activity-update/:activityId", activityController.updateActivity);
+router.post("/activity-delete/:activityId", activityController.deleteActivity);
 
 // -----Reservations-----
 router.get("/reservation-list", reservationController.fetchAllReservations);
+router.get("/reservation-create", reservationController.showReservationCreate);
+router.post("/reservation-create", reservationController.createReservation);
+router.get("/reservation-details/:reservationId", reservationController.showReservationDetails);
+router.get("/reservation-update/:reservationId", reservationController.showUpdateReservation);
+router.post("/reservation-update/:reservationId", reservationController.updateReservation);
+router.post("/reservation-delete/:reservationId", reservationController.deleteReservation);
 
 // -----Reviews-----
 router.get("/review-list", reviewController.fetchAllReviews);
-
-// -----Rates-----
-router.get("/rate-list", rateController.fetchAllRates);
+router.get("/review-create", reviewController.showReviewCreate);
+router.post("/review-create", reviewController.createReview);
+router.get("/review-details/:reviewId", reviewController.showReviewDetails);
+router.get("/review-update/:reviewId", reviewController.showUpdateReview);
+router.post("/review-update/:reviewId", reviewController.updateReview);
+router.post("/review-delete/:reviewId", reviewController.deleteReview);
 
 // -----Users-----
 // Afficher la liste des utilisateurs

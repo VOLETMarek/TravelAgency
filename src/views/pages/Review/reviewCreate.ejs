@@ -1,0 +1,47 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center mb-4">Create Review</h1>
+    <div>
+      <% if (success && success.length > 0) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+      <% } %>
+      <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% } %>
+    </div>
+    <form class="px-4" action="/backoffice/review-create" method="POST">
+      <div class="form-group mb-4">
+        <label for="content" class="mb-2">Content</label>
+        <textarea class="form-control" id="content" rows="5" placeholder="Enter Review Content" name="content" required></textarea>
+      </div>
+      <div class="form-group mb-4">
+        <label for="published_date" class="mb-2">Published Date</label>
+        <input type="date" class="form-control" id="published_date" name="published_date" required>
+      </div>
+      <div class="form-group mb-4">
+        <label for="user_id" class="mb-2">User ID</label>
+        <input type="number" class="form-control" id="user_id" placeholder="Enter User ID" name="user_id" required>
+      </div>
+      <div class="form-group mb-4">
+        <label for="hotel_id" class="mb-2">Hotel ID</label>
+        <input type="number" class="form-control" id="hotel_id" placeholder="Enter Hotel ID" name="hotel_id">
+      </div>
+      <div class="form-group mb-4">
+        <label for="flight_id" class="mb-2">Flight ID</label>
+        <input type="number" class="form-control" id="flight_id" placeholder="Enter Flight ID" name="flight_id">
+      </div>
+      <div class="form-group mb-4">
+        <label for="activity_id" class="mb-2">Activity ID</label>
+        <input type="number" class="form-control" id="activity_id" placeholder="Enter Activity ID" name="activity_id">
+      </div>
+      <button type="submit" class="btn btn-primary mb-4">Submit</button>
+    </form>
+  </div>
+</main>
+<%- include('../../partials/footer') %>

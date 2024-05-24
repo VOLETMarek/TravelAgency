@@ -1,0 +1,27 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center mb-4">Update Review</h1>
+    <div>
+      <% if (success && success.length > 0) { %>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+      <% } %>
+      <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% } %>
+    </div>
+    <form action="/backoffice/review-update/<%= review.id %>" method="POST">
+      <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" id="content" name="content" rows="3"><%= review.content %></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Review</button>
+    </form>
+  </div>
+</main>
+<%- include('../../partials/footer') %>

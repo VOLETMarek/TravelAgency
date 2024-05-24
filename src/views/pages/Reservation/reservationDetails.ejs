@@ -1,0 +1,20 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center mb-4">Reservation Details</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Reservation ID: <%= reservation.id %></h5>
+        <p class="card-text">Total Price: <%= reservation.total_price %></p>
+        <p class="card-text">User ID: <%= reservation.user_id %></p>
+        <p class="card-text">Flight ID: <%= reservation.flight_id %></p>
+        <p class="card-text">Activity ID: <%= reservation.activity_id %></p>
+        <p class="card-text">Hotel ID: <%= reservation.hotel_id %></p>
+        <p class="card-text">Date: <%= reservation.date %></p>
+        <p class="card-text">Status: <%= reservation.status %></p>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include('../../partials/footer') %>

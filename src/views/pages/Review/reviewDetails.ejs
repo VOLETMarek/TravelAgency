@@ -1,0 +1,30 @@
+<%- include('../../partials/head') %>
+<%- include('../../partials/header') %>
+<main class="bg-light">
+  <div class="container py-4">
+    <h1 class="text-center mb-4">Review Details</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Content:</h5>
+        <p class="card-text"><%= review.content %></p>
+        <h5 class="card-title">Published Date:</h5>
+        <p class="card-text"><%= review.published_date %></p>
+        <h5 class="card-title">User ID:</h5>
+        <p class="card-text"><%= review.user_id %></p>
+        <% if (review.hotel_id) { %>
+          <h5 class="card-title">Hotel ID:</h5>
+          <p class="card-text"><%= review.hotel_id %></p>
+        <% } %>
+        <% if (review.flight_id) { %>
+          <h5 class="card-title">Flight ID:</h5>
+          <p class="card-text"><%= review.flight_id %></p>
+        <% } %>
+        <% if (review.activity_id) { %>
+          <h5 class="card-title">Activity ID:</h5>
+          <p class="card-text"><%= review.activity_id %></p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include('../../partials/footer') %>

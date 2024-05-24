@@ -17,8 +17,6 @@ router.get("/flight-details/:flightId", flightController.fetchFlightDetails);
 router.get("/flight-reviews/:flightId", reviewController.fetchFlightReviews);
 // Route pour insertion d'un commentaire
 router.post("/flight-review", reviewController.createFlightReview);
-// Récupération de la note d'un vol
-router.get("/flight-rate/:flightId", reviewController.fetchFlightReviews);
 
 
 // -----Activities-----

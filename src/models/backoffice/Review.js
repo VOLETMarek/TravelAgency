@@ -22,6 +22,104 @@ const Review = {
     });
   },
 
+  // Créer une nouvelle critique
+  createReview: function (reviewData) {
+    return new Promise((resolve, reject) => {
+      const query = `
+          INSERT INTO reviews (content, published_date, user_id, hotel_id, flight_id, activity_id)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `;
+
+      const values = [
+        reviewData.content,
+        reviewData.published_date,
+        reviewData.user_id,
+        reviewData.hotel_id,
+        reviewData.flight_id,
+        reviewData.activity_id,
+      ];
+
+      db.query(query, values, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  },
+
+  // Récupération des informations d'u commentaire
+  getReviewById: function (reviewId, callback) {
+    db.query(
+      "SELECT * FROM reviews WHERE id = ?",
+      [reviewId],
+      (err, result) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        if (result.length) {
+          callback(null, result[0]);
+        } else {
+          callback({ message: "Aucun commentaire trouvé avec cet ID." }, null);
+        }
+      }
+    );
+  },
+
+  getReviewById: function (reviewId, callback) {
+    db.query(
+      "SELECT * FROM reviews WHERE id = ?",
+      [reviewId],
+      (err, result) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        if (result.length) {
+          callback(null, result[0]);
+        } else {
+          callback({ message: "Aucun commentaire trouvé avec cet ID." }, null);
+        }
+      }
+    );
+  },
+
+  updateReviewDetails: function (id, content) {
+    return new Promise((resolve, reject) => {
+      const query = `
+        UPDATE reviews 
+        SET content = ?
+        WHERE id = ?
+      `;
+
+      const values = [content, id]; 
+
+      db.query(query, values, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  },
+
+  deleteReviewById: function (reviewId) {
+    return new Promise((resolve, reject) => {
+      const query = "DELETE FROM reviews WHERE id = ?";
+
+      db.query(query, [reviewId], (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  },
+
   deleteByUserId: function (userId) {
     return new Promise((resolve, reject) => {
       const query = "DELETE FROM reviews WHERE user_id = ?";
@@ -33,7 +131,7 @@ const Review = {
         }
       });
     });
-  }
+  },
 };
 
 module.exports = Review;
